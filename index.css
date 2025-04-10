@@ -1,0 +1,475 @@
+body {
+    background-color:#1F7D53;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 1200px;
+    width:1200px; /* Ensures the image scales correctly */
+  margin: 0 auto;
+  font-family: "DM Serif Display", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #18230F;
+
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+header h1 {
+    font-family: "Prompt", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+    font-size: 4.5em;
+    margin-bottom: 20px;
+}
+
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3px;
+    font-family: "PT Sans Narrow", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.drone-status {
+    text-align: left;
+}
+
+.drone-image {
+    width: 150px;
+}
+
+.battery-status {
+    font-size: 1.2em;
+    margin-top: 100px;
+}
+
+.control {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.remote {
+    position: relative;
+    width: 145px;
+    height: 145px;
+    background:#27391C;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(237, 189, 189, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px 0;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.parent-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically if needed */
+   
+}
+
+.button {
+    width: 40px;
+    height: 40px;
+    background: #255F38;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #27391C;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 5px auto; /* Center horizontally */
+}
+.up    { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); }
+.down  { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); }
+.left  { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); }
+.right { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); }
+.top-left  { position: absolute; top: -40px; left: 20px; }
+.top-right { position: absolute; top: -40px; right: 20px; }
+
+button {
+    background-color:#27391C;
+    color: #000000;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 5px;
+}
+
+
+.status-panel {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.map-display{
+    width: 100%;
+    height: 475px;
+    border: 0;
+    margin:0px;
+}
+
+.safety-alert {
+    margin-top: 30px;
+}
+
+iframe {
+    filter: invert(100%); /* Normal colors for iframe */
+}
+
+.map-display iframe {
+    width: 100%; /* Full width of the map display */
+    height: 400px; /* Set a fixed height for the map */
+}
+
+
+@media (max-width: 600px) {
+    .map-container {
+        flex-direction: column; /* Stack vertically on smaller screens */
+    }
+
+    .map-display, 
+    .safety-features {
+        width: 100%; /* Full width for stacked layout */
+    }
+
+    .map-display iframe {
+        height: 300px; /* Adjust height for smaller screen */
+    }
+}
+
+.speedometer-container{
+    width:300px;
+    height:300px;
+    border:3px  solid black;
+    border-radius: 50%;
+    margin:50px auto;
+    position:relative;
+}
+.center-point{
+    width:20px;
+    height:20px;
+    background-color: black;
+    border-radius: 50%;
+    position:absolute;
+    top:137px;
+    left:137px;
+    z-index:9;
+}
+.speedometer-scale{
+    width:8px;
+    height:280px;
+    background-color: black;
+    position:absolute;
+    left:143px;
+    top:7px;
+    
+}
+.speedometer-scale-1{
+    transform:rotate(-90deg);
+}
+.speedometer-scale-2{
+    transform:rotate(-72deg);
+}
+.speedometer-scale-3{
+    transform:rotate(-54deg);
+}
+.speedometer-scale-4{
+    transform:rotate(-36deg);
+}
+.speedometer-scale-5{
+    transform:rotate(-18deg);
+}
+.speedometer-scale-6{
+    transform:rotate(0deg);
+}
+.speedometer-scale-7{
+    transform:rotate(18deg);
+}
+.speedometer-scale-8{
+    transform:rotate(36deg);
+}
+.speedometer-scale-9{
+    transform:rotate(54deg);
+}
+.speedometer-scale-10{
+    transform:rotate(72deg);
+}
+.speedometer-scale-11{
+    transform:rotate(90deg);
+    height:244px;
+    top:25px;
+    left:161px;
+}
+
+.speedometer-scale-1.active{
+    background-color: green;
+}
+.speedometer-scale-2.active{
+    background-color: green;
+}
+.speedometer-scale-3.active{
+    background-color: green;
+}
+.speedometer-scale-4.active{
+    background-color: green;
+}
+.speedometer-scale-5.active{
+    background-color: green;
+}
+.speedometer-scale-6.active{
+    background-color: green;
+}
+.speedometer-scale-7.active{
+    background-color: red;
+}
+.speedometer-scale-8.active{
+    background-color: red;
+}
+.speedometer-scale-9.active{
+    background-color: red;
+}
+.speedometer-scale-10.active{
+    background-color: red;
+}
+.speedometer-scale-11.active{
+    background-color: red;
+}
+
+
+
+.speedometer-center-hide{
+    width:250px;
+    height: 250px;
+    background-color: #1F7D53;
+    border-radius: 50%;
+    position:absolute;
+    top:22px;
+    left:22px;
+    z-index: 9;
+}
+.speedometer-bottom-hide{
+    width:300px;
+    height:165px;
+    background-color:#1F7D53;
+    position:absolute;
+    z-index: 11;
+    top:160px;
+    bottom:-14px;
+    border-top:1px solid;
+
+}
+
+.arrow-container{
+    width:160px;
+    height:160px;
+    background-color:transparent;
+    position:absolute;
+    z-index:12;
+    top:67px;
+    left:67px;
+}
+.arrow-wrapper{
+    width:160px;
+    height:160px;
+    background-color:transparent;
+    position:relative;
+    transition:all 0.4s;
+}
+.arrow{
+    width:110px;
+    height:4px;
+    background-color: #255F38;
+    position:absolute;
+    top:78px;
+    left:-30px;
+}
+.speed-0{
+  transform:rotate(0deg);  
+}
+.speed-10{
+    transform:rotate(18deg);  
+  }
+  .speed-20{
+    transform:rotate(36deg);  
+  }
+  .speed-30{
+    transform:rotate(54deg);  
+  }
+  .speed-40{
+    transform:rotate(72deg);  
+  }
+  .speed-50{
+    transform:rotate(90deg);  
+  }
+  .speed-60{
+    transform:rotate(108deg);  
+  }
+  .speed-70{
+    transform:rotate(126deg);  
+  }
+  .speed-80{
+    transform:rotate(144deg);  
+  }
+  .speed-90{
+    transform:rotate(162deg);  
+  }
+  .speed-100{
+    transform:rotate(180deg);  
+  }
+  .accelerate-container{
+    margin-top:20px;
+    text-align: center;
+  }
+.accelerate-container button{
+    width:200px;
+    height:60px;
+    border:none;
+    border-radius:5px;
+    margin:20px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    /* box-shadow:5px 5px 5px #c6c6cc; */
+}
+.accelerate-container button:active{
+    box-shadow:5px 5px 5px #c6c6cc;
+}
+.increase{
+    color:#3c8b56;
+}
+.decrease{
+   color:#3c8b56; 
+}
+.speedometer-text{
+    width:180px;
+    position:absolute;
+    z-index:20;
+    left:58px;
+    top:60px;
+    text-align:center;
+    font-weight:bold;
+}
+.static{
+    font-size:18px;
+}
+.dynamic{
+    margin-top:10px;
+}
+.km{
+    font-size:32px;
+}
+.unit{
+    font-size:14px;
+    margin-left:5px;
+}
+.battery-status{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:10px;
+    background-color:#1F7D53;
+    border-radius: 10px;
+    /* box-shadow: 0 20px 10px; */
+}
+.dashboard{
+    display:flex;
+    flex-direction:column;
+    padding:10px;
+    background-color:#1F7D53;
+    border-radius: 10px;
+    margin-left: 0.5px;
+    /* box-shadow: 0 20px 10px; */
+
+}
+.accelerate-container{
+    display: flex;
+    flex-direction: column;
+}
+.drone-status{
+    display:flex;
+    flex-direction:row;
+    gap:5px;
+    padding:10px;
+    background-color:#1F7D53;
+    border-radius: 10px;
+    /* box-shadow: 0 20px 10px; */
+
+}
+.battery-level{
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    width:150px;
+    height:60px;
+    background-color: #27391C;
+    border-radius: 30px;
+    overflow: hidden;
+}
+.battery-fill{
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    background-color:#1d5e41;
+    transition:width 0.5s ease;
+}
+.battery-percentage{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:24px;
+    font-weight:bold;
+    color:#1F7D53;
+}
+.battery-status-text{
+    margin-top:10px;
+    font-size: 20px;
+    font-weight:bold;
+    color:#18230F;
+}
+
+.signal-container {
+    display: flex;
+    align-items: flex-end;
+    height: 20px;
+    margin-top:25px;
+    gap: 2px;
+}
+.bar {
+    width: 5px;
+    background-color:#64efb0;
+    transition: background-color 0.3s;
+}
+.bar.active {
+    background-color:#27391C;
+}
+.bar:nth-child(1) { height: 20%; }
+.bar:nth-child(2) { height: 40%; }
+.bar:nth-child(3) { height: 60%; }
+.bar:nth-child(4) { height: 80%; }
+.bar:nth-child(5) { height: 100%; }
