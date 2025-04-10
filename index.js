@@ -1,46 +1,24 @@
-var speed=0;
-var prevSpeed=0;
-var currentScale=1;
-function increaseSpeed(){
-    if(speed<100){
-        speed=speed+10;
-        addClass();
-        changeActive();
-        currentScale=currentScale+1;
-        changeText();
-        
+var speed = 0;
 
+function increaseSpeed() {
+    if (speed < 100) {
+        speed += 10;
+        updateSpeedometer();
     }
 }
-function decreaseSpeed(){
-    if(speed>0){
-        speed=speed-10;
-        addClass();
-        
-        currentScale=currentScale-1;
-        changeActive();
-        changeText();
-    }
-}
-function addClass(){
-    let newClass="speed-"+speed;
-    let prevClass="speed-"+prevSpeed;
-    let el=document.getElementsByClassName("arrow-wrapper")[0];
-    if(el.classList.contains(prevClass)){
-        el.classList.remove(prevClass);
-        el.classList.add(newClass);
-    }
-    prevSpeed=speed;
 
+function decreaseSpeed() {
+    if (speed > 0) {
+        speed -= 10;
+        updateSpeedometer();
+    }
 }
-function changeActive(){
-    let tempClass="speedometer-scale-"+currentScale;
-    let el=document.getElementsByClassName(tempClass)[0];
-    el.classList.toggle("active");
-}
-function changeText(){
-    let el=document.getElementsByClassName("km")[0];
-    el.innerText=speed;
+
+function updateSpeedometer() {
+    let arc = document.getElementById('speedArc');
+    arc.style.setProperty('--speed', speed);
+    let km = document.getElementsByClassName('km')[0];
+    km.innerText = speed;
 }
 
 document.getElementById('rthButton').addEventListener('click', function() {
@@ -63,37 +41,33 @@ document.getElementById('rightButton').addEventListener('click', function() {
     alert('Drone moving right!');
 });
 
-document.getElementById('emergencyAlertButton').addEventListener('click', function() {
+document.getElementById('emergencyButton').addEventListener('click', function() {
     alert('Emergency alert triggered!');
 });
 
-
-navigator.getBattery().then(function(battery){
+navigator.getBattery().then(function(battery) {
     updateBatteryStatus(battery);
-    battery.addEventListener('levelchange', function(){
+    battery.addEventListener('levelchange', function() {
         updateBatteryStatus(battery);
     });
-    battery.addEventListener('chargingchange', function(){
+    battery.addEventListener('chargingchange', function() {
         updateBatteryStatus(battery);
     });
 });
 
-function updateBatteryStatus(battery){
-    var batteryfill = document.querySelector(".battery-fill");
+function updateBatteryStatus(battery) {
+    var batteryFill = document.querySelector(".battery-fill");
     var batteryPercentage = document.querySelector(".battery-percentage");
     var batteryValue = Math.round(Math.random() * 100);
-    var fillWidth =batteryValue+"%";
-    batteryfill.style.width = fillWidth;
+    var fillWidth = batteryValue + "%";
+    batteryFill.style.width = fillWidth;
     batteryPercentage.innerHTML = fillWidth;
-
-    // Update signal strength when battery updates
     updateSignalStrength(batteryValue);
 }
 
 function updateSignalStrength(batteryLevel) {
     let strength = batteryLevel > 20 ? 5 : 2;
     let bars = document.querySelectorAll(".bar");
-
     bars.forEach((bar, index) => {
         if (index < strength) {
             bar.classList.add("active");
@@ -101,18 +75,17 @@ function updateSignalStrength(batteryLevel) {
             bar.classList.remove("active");
         }
     });
-
     document.getElementById('connectionStrength').innerText = batteryLevel > 20 ? 'Strong' : 'Weak';
 }
 
-
-// Simulate battery and altitude updates
 setInterval(() => {
     const altitude = Math.floor(Math.random() * 1000);
     const droneCoordinates = `Lat: ${parseFloat((Math.random() * 180 - 90).toFixed(6))}, Lon: ${parseFloat((Math.random() * 360 - 180).toFixed(6))}`;
     const homeCoordinates = `Lat: ${parseFloat((Math.random() * 180 - 90).toFixed(6))}, Lon: ${parseFloat((Math.random() * 360 - 180).toFixed(6))}`;
-
     document.getElementById('altitudeDisplay').innerText = `${altitude} m`;
     document.getElementById('droneCoordinates').innerText = droneCoordinates;
     document.getElementById('homeCoordinates').innerText = homeCoordinates;
-}, 1000); // Update every second
+}, 1000);
+
+// Initialize speedometer
+updateSpeedometer();

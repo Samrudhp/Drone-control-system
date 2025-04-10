@@ -3,111 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drone Dashboard</title>
+    <title>Surveillance Drone Dashboard</title>
     <link rel="stylesheet" href="index.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&family=DM+Serif+Display:ital@0;1&family=Kalnia+Glaze:wght@100..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=PT+Sans+Narrow:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+FR+Moderne+Guides&family=Playwrite+GB+S+Guides:ital@0;1&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Shadows+Into+Light&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&family=DM+Serif+Display:ital@0;1&family=Kalnia+Glaze:wght@100..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=PT+Sans+Narrow:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+FR+Moderne+Guides&family=Playwrite+GB+S+Guides:ital@0;1&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Shadows+Into+Light&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&family=DM+Serif+Display:ital@0;1&family=Kalnia+Glaze:wght@100..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=PT+Sans+Narrow:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+FR+Moderne+Guides&family=Playwrite+GB+S+Guides:ital@0;1&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    
     <div class="container">
         <header>
-            <h1 style="text-align: center;">Drone Control Dashboard</h1>
+            <h1>Surveillance Drone Control</h1>
         </header>
         
         <div class="dashboard">
-            <div class="drone-status">
+            <div class="status-section">
                 <div class="battery-status">
-                    <div class="battery-level">
+                    <div class="battery-display">
                         <div class="battery-fill"></div>
                         <span class="battery-percentage">10%</span>
                     </div>
-                    <div class="battery-status-text">Battery</div>
-                <div class="signal-container" id="signal">
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                </div>
-                    <p id="connectionStrength">Strong</p>
-                </div>
-                    <div class="status-panel">
-                        <h2>Status Displays</h2>
-                        <p>Altitude: <span id="altitudeDisplay">0 m</span></p>
-                        <p>Drone Coordinates: <span id="droneCoordinates">N/A</span></p>
-                        <p>Home Coordinates: <span id="homeCoordinates">N/A</span></p>
-                        
+                    <div class="status-label">Battery</div>
+                    <div class="signal-display">
+                        <div class="signal-bars">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                        <span id="connectionStrength">Strong</span>
                     </div>
+                </div>
+                <div class="status-panel">
+                    <h2>Status</h2>
+                    <p>Altitude: <span id="altitudeDisplay">0 m</span></p>
+                    <p>Drone Coordinates: <span id="droneCoordinates">N/A</span></p>
+                    <p>Home Coordinates: <span id="homeCoordinates">N/A</span></p>
+                </div>
+            </div>
+
+            <div class="control-hub">
+                <div class="speedometer-container">
+                    <div class="speedometer-ring"></div>
+                    <div class="speedometer-arc" id="speedArc"></div>
+                    <div class="speedometer-text">
+                        <div class="static">Speed</div>
+                        <div class="dynamic">
+                            <span class="km">0</span>
+                            <span class="unit">KMPH</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-buttons">
+                    <button class="control-btn up" id="upButton">▲</button>
+                    <button class="control-btn left" id="leftButton">◀</button>
+                    <button class="control-btn right" id="rightButton">▶</button>
+                    <button class="control-btn down" id="downButton">▼</button>
+                    <button class="control-btn speed-up" onclick="increaseSpeed()">+ Speed</button>
+                    <button class="control-btn speed-down" onclick="decreaseSpeed()">- Speed</button>
+                    <button class="control-btn home" id="rthButton">🏠</button>
+                    <button class="control-btn emergency" id="emergencyButton">🚨</button>
+                </div>
+            </div>
             
-
-            <div class="speedometer-container">
-                <div class="speedometer-text">
-                    <div class="static">Speed</div>
-                    <div class="dynamic">
-                        <span class="km">0</span>
-                        <span class="unit">KMPH</span>
-                    </div>
-                </div>
-                <div class="speedometer-center-hide"></div>
-                <div class="speedometer-bottom-hide"></div>
-                <div class="arrow-container">
-                    <div class="arrow-wrapper speed-0">
-                        <div class="arrow"></div>
-                    </div>
-                </div>
-                <div class="center-point"></div>
-                    <div class="speedometer-scale speedometer-scale-1"></div>
-                    <div class="speedometer-scale speedometer-scale-2"></div>
-                    <div class="speedometer-scale speedometer-scale-3"></div>
-                    <div class="speedometer-scale speedometer-scale-4"></div>
-                    <div class="speedometer-scale speedometer-scale-5"></div>
-                    <div class="speedometer-scale speedometer-scale-6"></div>
-                    <div class="speedometer-scale speedometer-scale-7"></div>
-                    <div class="speedometer-scale speedometer-scale-8"></div>
-                    <div class="speedometer-scale speedometer-scale-9"></div>
-                    <div class="speedometer-scale speedometer-scale-10"></div>
-                    <div class="speedometer-scale speedometer-scale-11"></div>
+            <div class="map-section">
+                <h2>Map Display</h2>
+                <div class="map-placeholder">Map integration coming soon...</div>
+                <!-- Commented out map display -->
+                <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945976.5912275873!2d73.67892895735724!3d15.020836621445019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba35a4c37bf488f%3A0x41f1d28cd1757cd5!2sKarnataka!5e0!3m2!1sen!2sin!4v1743433728858!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
             </div>
-        
-
-            <div class="accelerate-container">
-                <button class="increase" onClick="increaseSpeed()">Increase Speed</button>
-                <button class="decrease"onClick="decreaseSpeed()">Decrease Speed</button>
-            </div>  
-        </div> 
-            <div class="control">
-                <h2>Motion Controls</h2>
-                <br>
-                <div class="remote">
-                    <div class="button up" id="upButton">▲</div>
-                    <div class="button down"id="downButton">▼</div>
-                    <div class="button left" id="leftButton">◀</div>
-                    <div class="button right"id="rightButton">▶</div>
-                    <br>
-                    <div class="button top-left"id="rthButton">🏠</div>
-                    <div class="button top-right"id="rthButton">🚨</div>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-        <div class="map-display">
-            <h2>Map Display</h2>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945976.5912275873!2d73.67892895735724!3d15.020836621445019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba35a4c37bf488f%3A0x41f1d28cd1757cd5!2sKarnataka!5e0!3m2!1sen!2sin!4v1743433728858!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        
-        
-        <div class="parent-container">   
-            <button id="emergencyAlertButton">Emergency Alert</button>
         </div>
     </div>
     <script src="index.js"></script>
