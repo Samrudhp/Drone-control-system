@@ -79,9 +79,9 @@ function updateSignalStrength(batteryLevel) {
 }
 
 setInterval(() => {
-    const altitude = Math.floor(Math.random() * 1000);
-    const droneCoordinates = `Lat: ${parseFloat((Math.random() * 180 - 90).toFixed(6))}, Lon: ${parseFloat((Math.random() * 360 - 180).toFixed(6))}`;
-    const homeCoordinates = `Lat: ${parseFloat((Math.random() * 180 - 90).toFixed(6))}, Lon: ${parseFloat((Math.random() * 360 - 180).toFixed(6))}`;
+    const altitude = Math.floor(Math.random() * 5) + 1;
+    const droneCoordinates = `X: ${parseFloat((Math.random() * 180 - 90).toFixed(6))}, Y: ${parseFloat((Math.random() * 360 - 180).toFixed(6))},Z: ${parseFloat((Math.random() * 180 - 90).toFixed(6))}`;
+    const homeCoordinates = `X: ${0}, Y: ${0}, Z: ${0}`;
     document.getElementById('altitudeDisplay').innerText = `${altitude} m`;
     document.getElementById('droneCoordinates').innerText = droneCoordinates;
     document.getElementById('homeCoordinates').innerText = homeCoordinates;
